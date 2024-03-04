@@ -1,0 +1,17 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Post {
+  id       Int
+  tenantId String
+  userId   Int
+  text     String
+
+  @@unique([tenantId, userId])
+}
